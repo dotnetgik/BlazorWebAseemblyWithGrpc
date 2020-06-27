@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAseemblyWithGrpc", "BlazorWebAseemblyWithGrpc\BlazorWebAseemblyWithGrpc.csproj", "{83D315B3-6DFC-49F6-BAC5-84BCA74BF521}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoGrpcService", "ToDoGrpcService\ToDoGrpcService.csproj", "{5EF08A7F-A140-48D7-8C61-553BD4614494}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo", "ToDo\ToDo.csproj", "{6C070CCA-6ED2-4499-87A8-551DD35B5B61}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{83D315B3-6DFC-49F6-BAC5-84BCA74BF521}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83D315B3-6DFC-49F6-BAC5-84BCA74BF521}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83D315B3-6DFC-49F6-BAC5-84BCA74BF521}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5EF08A7F-A140-48D7-8C61-553BD4614494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EF08A7F-A140-48D7-8C61-553BD4614494}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EF08A7F-A140-48D7-8C61-553BD4614494}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EF08A7F-A140-48D7-8C61-553BD4614494}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C070CCA-6ED2-4499-87A8-551DD35B5B61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C070CCA-6ED2-4499-87A8-551DD35B5B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C070CCA-6ED2-4499-87A8-551DD35B5B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
