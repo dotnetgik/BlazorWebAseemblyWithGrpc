@@ -1,0 +1,40 @@
+syntax = "proto3";
+option csharp_namespace = "ToDoGrpcService";
+import "google/protobuf/empty.proto";
+
+package ToDo;
+
+service ToDoService{
+rpc GetToDo(google.protobuf.Empty) returns (ToDoItems);
+rpc GetToDoItem(ToDoQuery) returns (ToDoData );
+rpc PostToDoItem(ToDoData) returns(ToDoPostResponse);
+rpc PutToDoItem(ToDoPutQuery) returns(ToDoPostResponse);
+rpc DeleteItem(ToDoQuery) returns (ToDoPostResponse);
+}
+
+message ToDoData{
+int32 Id=4;
+	string Title=1;
+	string Description=2;
+	bool Status=3;
+}
+
+message ToDoQuery{
+	int32 id=1;
+}
+
+message ToDoItems{
+	repeated ToDoData ToDoItemList =1;
+}
+
+message ToDoPutQuery{
+ToDoData ToDoDataItem=1;
+int32 Id=2;
+}
+
+message ToDoPostResponse{
+	string StatusMessage=1;
+	bool Status=2;
+	int32 StatusCode=3;
+}
+

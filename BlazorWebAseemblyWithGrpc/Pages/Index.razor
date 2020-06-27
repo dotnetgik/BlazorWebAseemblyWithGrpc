@@ -1,0 +1,59 @@
+﻿@page "/"
+@inject BlazorClient.Services.ToDoDataService ToDoService
+@if(toDoItems.ToDoItemList==null)
+{
+    <div class="spinner"></div>
+}
+
+@for (int i = 0; i < noOfRows; i++)
+{
+    <div class="row">
+        @for (int elementPosition = elementStartPosition; elementPosition < elementStartPosition + noOfCoumns; elementPosition++)
+        {
+            if (elementPosition > toDoItems.ToDoItemList.Count() - 1)
+            {
+                break;
+            }
+
+            <div class="card" style="width: 18rem;margin:3px;border-radius:10px">
+                <div class="card-body">
+                    <h5 class="card-title" style="background-color: #053870; color: white;text-align:center;padding:5px;font-weight:500">@toDoItems.ToDoItemList[elementPosition].Title</h5>
+                    <p class="card-text">@toDoItems.ToDoItemList[elementPosition].Description</p>
+                    <p class="card-text">@(toDoItems.ToDoItemList[elementPosition].Status==false?"Closed":"Active")</p>
+                </div>
+                <div class="card-footer text-md-center" >
+                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-danger">Trash</button>
+                </div>
+            </div>
+
+        }
+        <div style="display:none"> @(elementStartPosition=elementStartPosition + noOfCoumns);</div>
+    </div>
+
+}
+
+
+
+
+@code{
+
+    public ToDoGrpcService.ToDoItems toDoItems = new ToDoGrpcService.ToDoItems();
+
+    int noOfRows = 0;
+    int noOfCoumns = 3;
+    int elementStartPosition = 0;
+    protected async override Task OnInitializedAsync()
+    {
+        await GetToDoListAsync();
+    }
+
+    protected async Task GetToDoListAsync()
+    {
+      
+        toDoItems = await ToDoService.GetToDoList();
+        var temoRowCount = toDoItems.ToDoItemList.Count() / noOfCoumns;
+        noOfRows = toDoItems.ToDoItemList.Count() % 3 == 0 ? temoRowCount : temoRowCount + 1;
+    }
+
+}

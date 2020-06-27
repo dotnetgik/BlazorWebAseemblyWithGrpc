@@ -1,0 +1,52 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+@inject ToDo.Greeter.GreeterClient GreeterClient
+@inject ToDoGrpcService.ToDoService.ToDoServiceClient _todoDataClient
+
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+
+<h1>Invoke gRPC service</h1>
+
+<p>
+    <input @bind="yourName" placeholder="Type your name" />
+    <button @onclick="GetToDoDara" class="btn btn-primary">Call gRPC service</button>
+</p>
+
+Server response: <strong>@serverResponse</strong>
+
+
+
+
+@code {
+
+    string yourName = "Bert";
+    string serverResponse;
+    ToDoGrpcService.ToDoItems items=new ToDoGrpcService.ToDoItems();
+    async Task GetGreeting()
+    {
+        var request = new ToDo.HelloRequest { Name = yourName };
+        var reply = await GreeterClient.SayHelloAsync(request);
+        serverResponse = reply.Message;
+
+    }
+    async Task GetToDoDara()
+    {
+        items = await _todoDataClient.GetToDoAsync(new Google.Protobuf.WellKnownTypes.Empty(), null);
+        yourName = items.ToDoItemList[0].Title;
+        Console.WriteLine(items.ToDoItemList[0].Title);
+    }
+
+
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
