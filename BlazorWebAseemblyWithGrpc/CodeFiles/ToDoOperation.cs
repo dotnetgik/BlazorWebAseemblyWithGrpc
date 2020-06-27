@@ -113,11 +113,11 @@ namespace BlazorClient.CodeFiles
             ShowAlert = true;
             if (status)
             {
-                OperationStatusText = "Processed Successfully !! ";
+                OperationStatusText = "1";
             }
             else
             {
-                OperationStatusText = "Error Occured  ";
+                OperationStatusText = "0";
             }
 
         }

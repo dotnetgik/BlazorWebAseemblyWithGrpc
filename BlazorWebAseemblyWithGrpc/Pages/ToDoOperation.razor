@@ -5,7 +5,7 @@
 
 
 <div class="row" style="margin-bottom:15px">
-    <button id="btnAdd" @onclick="ShowAddpopup" class="btn btn-primary"><i class="oi oi-plus">Add New</i></button>
+    <button id="btnAdd" @onclick="ShowAddpopup" class="btn btn-primary" style="background-color: #053870; color: white"><i class="oi oi-plus">Add New</i></button>
 </div>
 
 @if (toDoItems != null && toDoItems.ToDoItemList != null)
@@ -98,7 +98,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    @OperationStatusText
+                    @if (OperationStatusText == "1")
+                    {
+                        <span> All Good &#128516;</span>
+                    }
+                    else
+                    {
+                        <span>Nothing is good i am angry now &#128544;</span>
+                    }
+                   
                 </div>
             </div>
         </div>
